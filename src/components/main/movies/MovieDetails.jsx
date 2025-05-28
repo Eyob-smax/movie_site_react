@@ -43,7 +43,6 @@ export default function MovieDetails({
             return moviesGenre.some((item) => item === genre.id);
           })
           .slice(0, 3);
-
         setGenere(genreIds);
       } catch (err) {
         console.error(err);

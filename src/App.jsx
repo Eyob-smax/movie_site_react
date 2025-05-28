@@ -50,6 +50,18 @@ export default function App() {
   }
 
   useEffect(() => {
+    const escape = () => {
+      if (selectedMovie) {
+        setSelectedMovie(null);
+      }
+    };
+    document.addEventListener("keypress", escape);
+    return () => {
+      document.removeEventListener("keypress", escape);
+    };
+  }, [selectedMovie]);
+
+  useEffect(() => {
     setIsLoading(true);
     setError("");
     const controller = new AbortController();
