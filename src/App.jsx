@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { watchedData } from "./model/data.js";
 import Box from "./components/main/Box.jsx";
 import Nav from "./components/nav/Nav.jsx";
 import MainView from "./components/main/MainView.jsx";
@@ -71,7 +70,6 @@ export default function App() {
         ]);
 
         const data = response instanceof Error ? [] : await response.json();
-        console.log(data.results);
         if (!data?.results.length) {
           setError("Can't find any movies");
           return;
