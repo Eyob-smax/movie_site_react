@@ -50,9 +50,9 @@ export default function App() {
   }
 
   useEffect(() => {
-    const escape = () => {
-      if (selectedMovie) {
-        setSelectedMovie(null);
+    const escape = (e) => {
+      if (selectedMovie && e.code === "Escape") {
+        closeDetails();
       }
     };
     document.addEventListener("keypress", escape);
