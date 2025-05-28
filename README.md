@@ -1,12 +1,36 @@
-# React + Vite
+🎬 Movie App – usePopcorn 🍿
+A responsive React-based movie discovery and watchlist app using The Movie Database (TMDb) API. Users can search movies, view details including genres, ratings, and overviews, and maintain a personal list of watched movies with custom ratings.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔍 Features
+🔎 Search Movies – Search for movies using TMDb’s search endpoint.
 
-Currently, two official plugins are available:
+🎥 Movie Details – View title, genres, release date, overview, and IMDb rating.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+⭐ User Ratings – Rate a movie before adding it to your watched list.
 
-## Expanding the ESLint configuration
+📝 Watched List – Save rated movies and see your personal watched history.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+⏳ Debounced Search – Efficient API usage with delayed querying.
+
+⚡ Error Handling – Alerts for API timeouts and no search results.
+
+📱 Responsive UI – Clean layout built with reusable components.
+
+🛠️ Technologies Used
+React (Hooks, State, Effect)
+
+JavaScript (ES6+)
+
+TMDb API for movie data
+
+Custom Components:
+
+Nav, Search, MoviesCounter
+
+Box, MainView
+
+MoviesList, MovieDetails
+
+WatchedSummary, WatchedMovieList
+
+StarRating, Loader, ErrorElement
