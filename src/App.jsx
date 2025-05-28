@@ -55,9 +55,9 @@ export default function App() {
         closeDetails();
       }
     };
-    document.addEventListener("keypress", escape);
+    document.addEventListener("keydown", escape);
     return () => {
-      document.removeEventListener("keypress", escape);
+      document.removeEventListener("keydown", escape);
     };
   }, [selectedMovie]);
 
