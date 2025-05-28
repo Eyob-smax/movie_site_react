@@ -64,6 +64,8 @@ export default function App() {
   useEffect(() => {
     setIsLoading(true);
     setError("");
+    closeDetails();
+
     const controller = new AbortController();
 
     const fetchData = async () => {
