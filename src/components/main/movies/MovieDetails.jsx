@@ -10,7 +10,8 @@ export default function MovieDetails({
 }) {
   const [genre, setGenere] = useState(null);
   const [userRating, setUserRating] = useState(0);
-  const counter = useRef(0);
+  const [previousRatings, setPreviousRatings] = useState([]);
+  const counter = useRef([]);
 
   const isWatched = watched.find((item) => item.id === movie.id);
   function handleAddWatched() {
@@ -21,7 +22,9 @@ export default function MovieDetails({
       user_rating: userRating,
       imbd_rating: Number(movie.popularity.toFixed(1)),
       runtime: 210,
+      counter: counter.current,
     };
+    console.log(watchedMovie);
     onSetWatched((prev) => [...prev, watchedMovie]);
     onClose();
   }
@@ -53,7 +56,16 @@ export default function MovieDetails({
     fetchedGenre();
     return () => {};
   }, [movie]);
-  console.log(counter);
+
+  useEffect(() => {
+    if (userRating) {
+      setPreviousRatings((prev) => {
+        counter.current = [...prev, userRating];
+        return [...prev, userRating];
+      });
+    }
+  }, [userRating]);
+
   return (
     <div className="details">
       <header>
@@ -77,12 +89,7 @@ export default function MovieDetails({
       <section>
         {!isWatched ? (
           <div className="rating">
-            <StarRating
-              key={movie.id}
-              size={24}
-              onSetRating={setUserRating}
-              counter={counter}
-            />
+            <StarRating key={movie.id} size={24} onSetRating={setUserRating} />
             <button onClick={handleAddWatched} className="btn-add">
               + Add to list
             </button>

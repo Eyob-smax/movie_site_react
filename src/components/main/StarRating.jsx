@@ -20,7 +20,6 @@ export default function StarRating({
   desc = [],
   defaultRating = 0,
   onSetRating = () => {},
-  counter,
 }) {
   const [rating, setRating] = useState(defaultRating);
   const [tempRating, setTempRating] = useState(0);
@@ -28,7 +27,6 @@ export default function StarRating({
   function handleRating(rating) {
     setRating(rating);
     onSetRating(rating);
-    counter.current++;
   }
   const textStyle = {
     lineHeight: "1",
