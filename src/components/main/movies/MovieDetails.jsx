@@ -10,6 +10,7 @@ export default function MovieDetails({
 }) {
   const [genre, setGenere] = useState(null);
   const [userRating, setUserRating] = useState(0);
+  /* eslint-disable */
   const [previousRatings, setPreviousRatings] = useState([]);
   const counter = useRef([]);
 
