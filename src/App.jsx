@@ -48,6 +48,11 @@ export default function App() {
   }
 
   useEffect(() => {
+    const parsed = JSON.parse(localStorage.getItem("watched_movies"));
+    setWatched(parsed);
+  }, []);
+
+  useEffect(() => {
     const escape = (e) => {
       if (selectedMovie && e.code === "Escape") {
         closeDetails();

@@ -24,6 +24,11 @@ export default function MovieDetails({
     onSetWatched((prev) => [...prev, watchedMovie]);
     onClose();
   }
+
+  useEffect(() => {
+    localStorage.setItem("watched_movies", JSON.stringify[watched]);
+  }, [watched]);
+
   useEffect(() => {
     if (!movie) return;
     document.title = `Watch | ${movie.title}`;

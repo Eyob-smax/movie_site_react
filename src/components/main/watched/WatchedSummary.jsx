@@ -22,5 +22,4 @@ function WatchedSummary({ watched }) {
 }
 
 const WatchedMemo = React.memo(WatchedSummary);
-
 export default WatchedMemo;
