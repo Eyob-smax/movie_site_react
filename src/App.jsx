@@ -89,6 +89,7 @@ export default function App() {
 
         const data = response instanceof Error ? [] : await response.json();
         if (!data?.results.length) {
+          setMoviesArray([]);
           setError("Can't find any movies");
           return;
         }
@@ -100,6 +101,7 @@ export default function App() {
         );
       } catch (err) {
         setError(err.message);
+        setMoviesArray([]);
       } finally {
         setIsLoading(false);
       }
