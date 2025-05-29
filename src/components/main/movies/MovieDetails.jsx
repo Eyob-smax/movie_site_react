@@ -26,11 +26,6 @@ export default function MovieDetails({
   }
 
   useEffect(() => {
-    localStorage.setItem("watched_movies", JSON.stringify[watched]);
-    console.log("skldjfhas");
-  }, [watched]);
-
-  useEffect(() => {
     if (!movie) return;
     document.title = `Watch | ${movie.title}`;
     return () => {

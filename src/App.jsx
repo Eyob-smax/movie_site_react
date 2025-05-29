@@ -20,7 +20,9 @@ const upcomingUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKe
 
 export default function App() {
   const [moviesArray, setMoviesArray] = useState([]);
-  const [watched, setWatched] = useState([]);
+  const [watched, setWatched] = useState(() =>
+    JSON.parse(localStorage.getItem("watched_movies"))
+  );
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [query, setQuery] = useState("");
@@ -48,9 +50,8 @@ export default function App() {
   }
 
   useEffect(() => {
-    const parsed = JSON.parse(localStorage.getItem("watched_movies"));
-    setWatched(parsed);
-  }, []);
+    localStorage.setItem("watched_movies", JSON.stringify(watched));
+  }, [watched]);
 
   useEffect(() => {
     const escape = (e) => {
