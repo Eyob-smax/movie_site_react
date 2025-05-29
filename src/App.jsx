@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import Box from "./components/main/Box.jsx";
 import Nav from "./components/nav/Nav.jsx";
 import MainView from "./components/main/MainView.jsx";
@@ -20,8 +20,8 @@ const upcomingUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKe
 
 export default function App() {
   const [moviesArray, setMoviesArray] = useState([]);
-  const [watched, setWatched] = useState(() =>
-    JSON.parse(localStorage.getItem("watched_movies")) || []
+  const [watched, setWatched] = useState(
+    () => JSON.parse(localStorage.getItem("watched_movies")) || []
   );
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -116,7 +116,7 @@ export default function App() {
     <>
       <Nav>
         <Search query={query} setQuery={setQuery} />
-        <MoviesCounter moviesArray={moviesArray} />
+        <MoviesCounter key={useId()} moviesArray={moviesArray} />
       </Nav>
       <MainView>
         <Box>
