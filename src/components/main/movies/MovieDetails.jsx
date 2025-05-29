@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import StarRating from "../StarRating";
 const apiKey = "21d63f70af9ef597fdeb1bb793050970";
 const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
@@ -10,6 +10,7 @@ export default function MovieDetails({
 }) {
   const [genre, setGenere] = useState(null);
   const [userRating, setUserRating] = useState(0);
+  const counter = useRef(0);
 
   const isWatched = watched.find((item) => item.id === movie.id);
   function handleAddWatched() {
@@ -52,7 +53,7 @@ export default function MovieDetails({
     fetchedGenre();
     return () => {};
   }, [movie]);
-
+  console.log(counter);
   return (
     <div className="details">
       <header>
@@ -76,7 +77,12 @@ export default function MovieDetails({
       <section>
         {!isWatched ? (
           <div className="rating">
-            <StarRating key={movie.id} size={24} onSetRating={setUserRating} />
+            <StarRating
+              key={movie.id}
+              size={24}
+              onSetRating={setUserRating}
+              counter={counter}
+            />
             <button onClick={handleAddWatched} className="btn-add">
               + Add to list
             </button>
