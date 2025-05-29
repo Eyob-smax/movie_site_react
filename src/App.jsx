@@ -116,7 +116,7 @@ export default function App() {
     <>
       <Nav>
         <Search query={query} setQuery={setQuery} />
-        <MoviesCounter key={useId()} moviesArray={moviesArray} />
+        <MoviesCounter key={useId()} moviesArray={moviesArray.length} />
       </Nav>
       <MainView>
         <Box>
