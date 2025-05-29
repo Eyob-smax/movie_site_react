@@ -23,7 +23,7 @@ export default function MovieDetails({
       user_rating: userRating,
       imbd_rating: Number(movie.popularity.toFixed(1)),
       runtime: 210,
-      counter: counter.current,
+      prevRateCounter: counter.current,
     };
     console.log(watchedMovie);
     onSetWatched((prev) => [...prev, watchedMovie]);
