@@ -14,10 +14,8 @@ const apiKey = "21d63f70af9ef597fdeb1bb793050970";
 const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`;
 const posterUl = "https://image.tmdb.org/t/p/w500";
 
-const arr = [1, 2, 3, 4, 5];
-
 const upcomingUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=${String(
-  arr[Math.floor(Math.random() * arr.length)]
+  [1, 2, 3, 4, 5][Math.floor(Math.random() * arr.length)]
 )}`;
 
 export default function App() {
