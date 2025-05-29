@@ -25,7 +25,6 @@ export default function MovieDetails({
       runtime: 210,
       prevRateCounter: counter.current,
     };
-    console.log(watchedMovie);
     onSetWatched((prev) => [...prev, watchedMovie]);
     onClose();
   }
