@@ -10,6 +10,7 @@ import MoviesCounter from "./components/nav/MoviesCounter.jsx";
 import MovieDetails from "./components/main/movies/MovieDetails.jsx";
 import { Loader, ErrorElement } from "./components/Util.jsx";
 import { useLocalStorage } from "./components/main/custom-hook/useLocalStorage.jsx";
+import { useKey } from "./components/main/custom-hook/useKey.jsx";
 const apiKey = "21d63f70af9ef597fdeb1bb793050970";
 const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`;
 const posterUl = "https://image.tmdb.org/t/p/w500";
@@ -27,6 +28,8 @@ export default function App() {
   const [query, setQuery] = useState("");
   const [selectedMovie, setSelectedMovie] = useState(null);
   const timeOutId = useRef(null);
+
+  useKey(selectedMovie, closeDetails);
 
   function debouncedSearch(fn, delay = 1000) {
     clearTimeout(timeOutId.current);
@@ -47,19 +50,6 @@ export default function App() {
     const movie = moviesArray.find((item) => item.id === id);
     setSelectedMovie(movie);
   }
-
-  useEffect(() => {
-    const escape = (e) => {
-      if (selectedMovie && e.code === "Escape") {
-        closeDetails();
-      }
-    };
-    document.addEventListener("keydown", escape);
-    return () => {
-      document.removeEventListener("keydown", escape);
-    };
-  }, [selectedMovie]);
-
   useEffect(() => {
     setIsLoading(true);
     setError("");
