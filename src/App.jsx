@@ -9,7 +9,7 @@ import Search from "./components/nav/Search.jsx";
 import MoviesCounter from "./components/nav/MoviesCounter.jsx";
 import MovieDetails from "./components/main/movies/MovieDetails.jsx";
 import { Loader, ErrorElement } from "./components/Util.jsx";
-
+import { useLocalStorage } from "./components/main/custom-hook/useLocalStorage.jsx";
 const apiKey = "21d63f70af9ef597fdeb1bb793050970";
 const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`;
 const posterUl = "https://image.tmdb.org/t/p/w500";
@@ -20,9 +20,8 @@ const upcomingUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKe
 
 export default function App() {
   const [moviesArray, setMoviesArray] = useState([]);
-  const [watched, setWatched] = useState(
-    () => JSON.parse(localStorage.getItem("watched_movies")) || []
-  );
+  const [watched, setWatched] = useLocalStorage([], "watched_movies");
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [query, setQuery] = useState("");
@@ -48,10 +47,6 @@ export default function App() {
     const movie = moviesArray.find((item) => item.id === id);
     setSelectedMovie(movie);
   }
-
-  useEffect(() => {
-    localStorage.setItem("watched_movies", JSON.stringify(watched));
-  }, [watched]);
 
   useEffect(() => {
     const escape = (e) => {
