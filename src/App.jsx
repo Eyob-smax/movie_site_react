@@ -29,7 +29,7 @@ export default function App() {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const timeOutId = useRef(null);
 
-  useKey(selectedMovie, closeDetails);
+  useKey("Escape", closeDetails);
 
   function debouncedSearch(fn, delay = 1000) {
     clearTimeout(timeOutId.current);

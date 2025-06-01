@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-export function useKey(selectedMovie, callback) {
+export function useKey(key, callback) {
   useEffect(() => {
     const escape = (e) => {
-      if (selectedMovie && e.code === "Escape") {
+      if (e.code.toLowerCase() === key.toLowerCase()) {
         callback?.();
       }
     };
@@ -10,5 +10,5 @@ export function useKey(selectedMovie, callback) {
     return () => {
       document.removeEventListener("keydown", escape);
     };
-  }, [selectedMovie, callback]);
+  }, [key, callback]);
 }
