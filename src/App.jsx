@@ -30,7 +30,6 @@ export default function App() {
   const timeOutId = useRef(null);
 
   useKey("Escape", closeDetails);
-
   function debouncedSearch(fn, delay = 1000) {
     clearTimeout(timeOutId.current);
     timeOutId.current = setTimeout(() => {
