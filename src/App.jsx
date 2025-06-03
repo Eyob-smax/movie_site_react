@@ -59,7 +59,7 @@ export default function App() {
     const fetchData = async () => {
       setSelectedMovie(null);
       try {
-        const response = Promise.race([
+        const response = await Promise.race([
           fetch((query ? url : upcomingUrl) + query, {
             signal: controller.signal,
           }),
