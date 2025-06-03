@@ -71,7 +71,8 @@ export default function App() {
           ),
         ]);
 
-        const data = response instanceof Error ? [] : response.json();
+        const data =
+          (await response) instanceof Error ? [] : await response.json();
         if (!data?.results.length) {
           setMoviesArray([]);
           setError("Can't find any movies");
