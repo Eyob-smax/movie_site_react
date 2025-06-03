@@ -66,7 +66,7 @@ export default function App() {
           new Promise((_, reject) =>
             setTimeout(
               () => reject(new Error("Slow Internet: Request timed out")),
-              30000
+              20000
             )
           ),
         ]);
